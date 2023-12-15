@@ -3,48 +3,6 @@
 
 // 🚨🚨🚨 Comment out the below code before you start working on the code
 
-// Out of sync
-/* getInstruction("mashedPotatoes", 0, (step1) => {
-    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step1}</li>`;
-  }, (error) => console.log(error)); */
-
-/*getInstruction(
-  "mashedPotatoes",
-  1,
-  (step2) => {
-    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step2}</li>`;
-  },
-  (error) => console.log(error)
-); */
-
-/*getInstruction(
-  "mashedPotatoes",
-  2,
-  (step3) => {
-    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step3}</li>`;
-  },
-  (error) => console.log(error)
-); */
-
-/*getInstruction(
-  "mashedPotatoes",
-  3,
-  (step4) => {
-    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step4}</li>`;
-  },
-  (error) => console.log(error)
-); */
-
-/*getInstruction(
-  "mashedPotatoes",
-  4,
-  (step5) => {
-    document.querySelector("#mashedPotatoes").innerHTML += `<li>${step5}</li>`;
-    document.querySelector("#mashedPotatoesImg").removeAttribute("hidden");
-  },
-  (error) => console.log(error)
-);*/
-
 // Iteration 1 - using callbacks
 getInstruction(
   "mashedPotatoes",
@@ -185,8 +143,67 @@ async function makeBroccoli() {
 
 makeBroccoli();
 
+async function showImg() {
+  try {
+      document.querySelector("#mashedPotatoesImg").style.display = "block";
+      document.querySelector("#steakImg").style.display = "block";
+      document.querySelector("#brusselsSproutsImg").style.display = "block";
+      document.querySelector("#broccoliImg").style.display = "block";
+  } catch (error) {
+      console.log(error);
+  }
+}
+
+showImg();
 // Bonus 2 - Promise all
-const items = [
+async function makeBrussels() {
+  try {
+      let response0 = await obtainInstruction("brusselsSprouts", 0);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response0}</li>`;
+      let response1 = await obtainInstruction("brusselsSprouts", 1);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response1}</li>`;
+      let response2 = await obtainInstruction("brusselsSprouts", 2);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response2}</li>`;
+      let response3 = await obtainInstruction("brusselsSprouts", 3);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response3}</li>`;
+      let response4 = await obtainInstruction("brusselsSprouts", 4);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response4}</li>`;
+      let response5 = await obtainInstruction("brusselsSprouts", 5);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response5}</li>`;
+      let response6 = await obtainInstruction("brusselsSprouts", 6);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response6}</li>`;
+      let response7 = await obtainInstruction("brusselsSprouts", 7);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response7}</li>`;
+      let response8 = await obtainInstruction("brusselsSprouts", 8);
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response8}</li>`;
+  } catch (error) {
+      console.log(error);
+  }
+  let response9 = "Brussels sprouts are ready";
+  document.querySelector(
+      "#brusselsSprouts"
+  ).innerHTML += `<li>${response9}</li>`;
+}
+
+Promise.all([
   obtainInstruction("brusselsSprouts", 0),
   obtainInstruction("brusselsSprouts", 1),
   obtainInstruction("brusselsSprouts", 2),
@@ -194,5 +211,38 @@ const items = [
   obtainInstruction("brusselsSprouts", 4),
   obtainInstruction("brusselsSprouts", 5),
   obtainInstruction("brusselsSprouts", 6),
-  obtainInstruction("brusselsSprouts", 7),
-];
+  obtainInstruction("brusselsSprouts", 7)
+])
+  .then((response) => {
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[0]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[1]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[2]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[3]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[4]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[5]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[6]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>${response[7]}</li>`;
+      document.querySelector(
+          "#brusselsSprouts"
+      ).innerHTML += `<li>Brussels sprouts are ready</li>`;
+      document.querySelector("#brusselsSproutsImg").style.display = "block";
+  })
+  .catch((error) => {
+      console.log(error);
+  });
